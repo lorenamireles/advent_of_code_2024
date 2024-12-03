@@ -1,4 +1,4 @@
-defmodule AoC24.Day1 do
+defmodule AdventOfCode2024.Day1 do
   @moduledoc """
   Advent of Code 2024: Day 1 - Historian Hysteria
 
@@ -10,7 +10,7 @@ defmodule AoC24.Day1 do
 
   ## Examples
 
-      iex> AoC24.Day1.part_1()
+      iex> AdventOfCode2024.Day1.part_1()
       iex> 7
 
   Update the path with the location of your input file.
@@ -30,7 +30,7 @@ defmodule AoC24.Day1 do
 
   ## Examples
 
-      iex> AoC24.Day1.part_2()
+      iex> AdventOfCode2024.Day1.part_2()
       iex> 31
 
   Update the path with the location of your input file.
@@ -84,7 +84,7 @@ defmodule AoC24.Day1 do
 
   For example, for the following lists: list_1 = [1,3,5] list_2 = [4,5,6]
 
-  The distances are: [3, 2, 1] respectively. So the final result is 7.
+  The distances are: [3, 2, 1] respectively. So the final result is 6.
   """
   @spec sum_distance_list_items(map()) :: integer()
   def sum_distance_list_items(%{first_list: first_list, second_list: second_list} = _input) do
