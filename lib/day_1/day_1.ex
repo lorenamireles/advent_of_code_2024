@@ -46,8 +46,8 @@ defmodule AdventOfCode2024.Day1 do
   end
 
   @doc """
-  This function takes a file path, reads it, and separates its 
-  elements by line breaks.
+  Receives a path corresponding to a .txt file with the exercise input,
+  reads it and applies the necessary transformations.
   """
   @spec get_input(String.t()) :: list()
   def get_input(path) do
@@ -57,13 +57,13 @@ defmodule AdventOfCode2024.Day1 do
   end
 
   @doc """
-  This function takes a list where the elements are strings with two 
-  components separated by whitespace. 
+  This function takes a list where the elements are strings with two
+  components separated by whitespace.
 
-  Example: "3   4" 
+  Example: "3   4"
 
-  It assigns the first element to list one and the second to list two, 
-  assuming both are numbers. 
+  It assigns the first element to list one and the second to list two,
+  assuming both are numbers.
   """
   @spec define_separated_lists(list()) :: map()
   def define_separated_lists(input) do
@@ -78,8 +78,8 @@ defmodule AdventOfCode2024.Day1 do
   end
 
   @doc """
-  This function receives a map with two lists, sorts them from smallest 
-  to largest, calculates the distance between the elements of each and 
+  This function receives a map with two lists, sorts them from smallest
+  to largest, calculates the distance between the elements of each and
   returns the sum.
 
   For example, for the following lists: list_1 = [1,3,5] list_2 = [4,5,6]
@@ -97,7 +97,7 @@ defmodule AdventOfCode2024.Day1 do
   end
 
   @doc """
-  This function receives two lists. It checks how many times each element of 
+  This function receives two lists. It checks how many times each element of
   the first list appears in the second list and multiplies their frequencies.
   """
   @spec multiply_frequencies(map()) :: integer()
