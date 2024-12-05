@@ -61,11 +61,11 @@ defmodule AdventOfCode2024.Day4 do
   it returns 1; otherwise, it returns 0.
   """
   @spec valid_x_mas(tuple, map) :: integer()
-  def valid_x_mas({row, colum} = _coordinate, input) do
-    top_left = input[{row - 1, colum - 1}]
-    top_right = input[{row - 1, colum + 1}]
-    bottom_left = input[{row + 1, colum - 1}]
-    bottom_right = input[{row + 1, colum + 1}]
+  def valid_x_mas({row, column} = _coordinate, input) do
+    top_left = input[{row - 1, column - 1}]
+    top_right = input[{row - 1, column + 1}]
+    bottom_left = input[{row + 1, column - 1}]
+    bottom_right = input[{row + 1, column + 1}]
 
     cond do
       top_left == "M" && bottom_left == "M" && top_right == "S" && bottom_right == "S" -> 1
@@ -93,16 +93,16 @@ defmodule AdventOfCode2024.Day4 do
   positions and counts the adjacent words.
   """
   @spec check_coordinate(tuple, [String.t()], map) :: integer
-  def check_coordinate({row, colum}, word, input) do
+  def check_coordinate({row, column}, word, input) do
     positions_to_check = [
-      %{value: {row, colum + 1}, row: 0, colum: 1},
-      %{value: {row, colum - 1}, row: 0, colum: -1},
-      %{value: {row + 1, colum}, row: 1, colum: 0},
-      %{value: {row - 1, colum}, row: -1, colum: 0},
-      %{value: {row - 1, colum + 1}, row: -1, colum: 1},
-      %{value: {row - 1, colum - 1}, row: -1, colum: -1},
-      %{value: {row + 1, colum + 1}, row: 1, colum: 1},
-      %{value: {row + 1, colum - 1}, row: 1, colum: -1}
+      %{value: {row, column + 1}, row: 0, column: 1},
+      %{value: {row, column - 1}, row: 0, column: -1},
+      %{value: {row + 1, column}, row: 1, column: 0},
+      %{value: {row - 1, column}, row: -1, column: 0},
+      %{value: {row - 1, column + 1}, row: -1, column: 1},
+      %{value: {row - 1, column - 1}, row: -1, column: -1},
+      %{value: {row + 1, column + 1}, row: 1, column: 1},
+      %{value: {row + 1, column - 1}, row: 1, column: -1}
     ]
 
     Enum.reduce(positions_to_check, 0, fn position, acc ->
@@ -117,7 +117,7 @@ defmodule AdventOfCode2024.Day4 do
   @spec match_word([String.t()], map, map) :: integer()
   def match_word(
         [_head | rest] = _word,
-        %{value: {row, colum}, row: row_inc, colum: colum_inc},
+        %{value: {row, column}, row: row_inc, column: column_inc},
         input
       ) do
     elem = List.first(rest)
@@ -126,10 +126,10 @@ defmodule AdventOfCode2024.Day4 do
       rest == [] ->
         1
 
-      input[{row, colum}] == elem ->
+      input[{row, column}] == elem ->
         match_word(
           rest,
-          %{value: {row + row_inc, colum + colum_inc}, row: row_inc, colum: colum_inc},
+          %{value: {row + row_inc, column + column_inc}, row: row_inc, column: column_inc},
           input
         )
 
@@ -165,6 +165,6 @@ defmodule AdventOfCode2024.Day4 do
   defp get_coordinate_format({word_row, row_index}) do
     word_row
     |> String.graphemes()
-    |> Enum.with_index(fn char, colum_index -> {{row_index, colum_index}, char} end)
+    |> Enum.with_index(fn char, column_index -> {{row_index, column_index}, char} end)
   end
 end
